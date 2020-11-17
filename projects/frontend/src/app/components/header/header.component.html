@@ -11,7 +11,7 @@
             </li>
             
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
+                <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"  *ngIf="isLoggedInUser" aria-expanded="false">Category</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownId">
                     <a class="dropdown-item" href="#">Bangles</a>
                     <a class="dropdown-item" href="#">Earrings</a>
@@ -21,10 +21,13 @@
         </ul>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Login</a>
+                <a class="nav-link" href="#" *ngIf="!isLoggedInUser">Login</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#" *ngIf="!isLoggedInUser">Register</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
+                <a class="nav-link" href="#" *ngIf="isLoggedInUser">Logout</a>
             </li>
            
         </ul>
