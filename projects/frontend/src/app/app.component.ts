@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 export class AppComponent {
   
   constructor(private toastr:ToastrService){
-    this.toastr.success("Success");
+    //this.toastr.success("Success");
   }
 
 }
