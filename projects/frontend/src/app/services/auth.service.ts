@@ -19,8 +19,17 @@ export class AuthService {
     return this.http.get<any>(this.apiUrl+"/users");
    
     }
+    getOrders(){
+      return this.http.get<any>(this.apiUrl+"/orders/");
+     
+      }
+    updateStatus(id,obj){
+      let url = this.apiUrl+"/orders/"+id;
+      return this.http.patch<any>(url,obj);
+     
+    }
     storeLogindetails(user){
 
-      localStorage.setItem("LOGGEDIN_USER",JSON.stringify(user));
+      localStorage.setItem("loggedInUser",JSON.stringify(user));
     }
 }

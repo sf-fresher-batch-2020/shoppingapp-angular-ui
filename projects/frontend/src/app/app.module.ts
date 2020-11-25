@@ -11,8 +11,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './component/login/login.component';
+import { OrdersComponent } from './orders/orders.component';
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, HomeComponent, LoginComponent],
+  declarations: [AppComponent, HeaderComponent, HomeComponent, LoginComponent, OrdersComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
