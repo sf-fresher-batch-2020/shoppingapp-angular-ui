@@ -16,32 +16,25 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   login(form:NgForm){
-    this.userservice.getUsers().subscribe(res =>{
-      console.log(res);
-      let users: any=res;
-      let exists= false;
-      let loggedInUser=null;
-      for(let obj of users){
-        if(obj.email==this.email && obj.password==this.password){
-          exists=true;
-          delete obj["password"];
-          loggedInUser=obj;
-          break;
-        }
-      }
-
-      if(exists){
+    console.log(form.value);
+    let exists = false;
+    if(this.email == "admin@gmail.com" && this.password == "pass123"){ 
+     exists = true;
+    if(exists){
+      let loggedInUser = {id:1,name:"admin",role:"ADMIN"}
         this.userservice.storeLogindetails(loggedInUser);
         if(loggedInUser.role=="ADMIN"){
           this.toastr.success("ADMIN LOGGED IN");
-          this.router.navigate(['home']);
+          this.router.navigate(['orders']);
         }
-        else{
-          this.toastr.error("Invalid Credentials");
         
-        }
       }
+     
       
-    })
+    }
+    else{
+      this.toastr.error("Invalid Credentials");
+    
+    }
   }
 }

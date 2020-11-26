@@ -1,0 +1,43 @@
+<h1>My Orders</h1>
+    <table border="2px solid black" style="margin-left: 0%; margin-top: 20px;">
+        <thead>
+
+          <tr>
+            <th> Order ID </th>
+            <th>Order Details</th>
+            <th>Ordered By</th>
+            <th> Ordered Date </th>            
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="tablebody" *ngIf = "orders">
+            <tr *ngFor="let o of orders;let i=index">  
+            <td>{{o.id}}</td>
+            <td>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>name</th>
+                            <th>price</th>
+                            <th>count</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf = "o.items">
+                        <tr *ngFor="let item of o.items">
+                            <td>{{item.id}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.price}}</td>
+                            <td>{{item.no}}</td>
+                        </tr>
+                    </tbody>
+            </table></td>  
+            <td>{{o.createdBy}}</td>
+            <td>{{o.createdDate}}</td> 
+            <td>{{o.status}}</td> 
+            <td><button type="button" *ngIf = "o.status == 'ORDERED'"(click)="cancelOrder(o.id,'DELIVERED')">DELIVER</button>
+                <button type="button" *ngIf = "o.status == 'DELIVERED'" (click)="cancelOrder(o.id,'CANCELLED')">CANCEL</button></td>  
+        </tr>
+        </tbody>
+      </table>
