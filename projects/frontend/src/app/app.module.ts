@@ -12,8 +12,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './component/login/login.component';
 import { OrdersComponent } from './orders/orders.component';
+import { ListproductsComponent } from './listproducts/listproducts.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { ViewCartComponent } from './view-cart/view-cart.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { RangePipe } from './range.pipe';
+import { CategoriesPipe } from './categories.pipe';
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, HomeComponent, LoginComponent, OrdersComponent],
+  declarations: [AppComponent, HeaderComponent, HomeComponent, LoginComponent, OrdersComponent, ListproductsComponent, SidebarComponent, ViewCartComponent, MyOrdersComponent, RangePipe, CategoriesPipe],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -1,0 +1,134 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+            <div class="dropdown">
+                <form action="cart.html">
+                    <div style="text-align: left;">
+                        <label for="category"
+                            style="background: cadetblue; text-align: center; width: 100px;">CATEGORY</label> <br/>
+                        <input type="radio" name="category" value="" [(ngModel)]="categories" >All<br/>
+                        <input type="radio" name="category" value="bangles" [(ngModel)]="categories">Bangles<br/>
+                        <input type="radio" name="category" value="earrings" [(ngModel)]="categories">Earrings<br/>
+                        <input type="radio" name="category" value="bracelets" [(ngModel)]="categories">Bracelets<br/>
+
+                        <label for="range"
+                            style="background: cadetblue; text-align: center;width: 100px;">RANGE</label> <br/>
+                        <input type="radio" name="range" value="" style="text-align: left;" [(ngModel)]="range">All<br/>
+                        <input type="radio" name="range" value="low" [(ngModel)]="range">Below 100<br />
+                        <input type="radio" name="range" value="medium" [(ngModel)]="range">100-200<br/>
+                        <input type="radio" name="range" value="high" [(ngModel)]="range">Above 200<br/>
+                    </div>
+                    
+
+                </form>
+            </div>
+        </div>
+        <div class="col-10">
+            <div id="app" *ngIf="products">
+            <div class="row">
+                <div class="col pull-right mr-auto">
+                <button type="button" id="clearcartitemsbtn" (click)="clearAll()">Clear Cart</button>
+                <button type="button" id="orderbtn" data-toggle="modal" data-target="#exampleModal"><b>Place Order</b></button>
+            </div>
+            </div>
+            <br/>
+                <!-- {{items | json}} -->
+                <div class="row">
+                    <div class=col-3 *ngFor="let p of (products|range:range|categories:categories)">
+                        <div class="card" style="width: 18rem;">
+                            <img width="100px" height="250px" src="{{p.image_url}}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">{{p.product_name}}</h5>
+
+                              <p class="card-text">{{p.product_description}} <br/>
+                                <span class="badge badge-primary">Rs.{{p.product_price}}</span> &nbsp;
+                                <span class="badge badge-secondary">{{p.productrange}}</span> &nbsp;
+                                <span class="badge badge-info">{{p.category}}</span>
+                              </p>
+
+                              <button type=button class="btn btn-primary" (click)="addToCart(p)">Add To Cart</button>
+                            </div>
+                          </div>
+                        <!-- <div class="card text-white bg-primary" >
+                            <img class="card-img-top" src="{{p.image_url}}" alt="">
+                            <div class="card-body">
+                              <h4 class="card-title">{{p.name}}</h4>
+                              <p class="card-text">{{p.price}}</p>
+                              <p class="card-text">{{p.description}}</p>
+                              <button type=button class="btn btn-primary" (click)="addToCart(p)">Add To Cart</button>
+                            </div>
+                          </div> -->
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="cartBox">
+    <div class="cart">
+        <i class="fa fa-close"></i>
+        <h1 id="cartitems">Cart</h1>
+        <h2 class="alert alert-success" role="alert"
+            style="background: green;color: black; display: none; padding-top: 20px;">SUCCESSFUL!</h2>
+        <p style="display: none;" id="ordermsg"><b> <br/>Your Order has been Placed Successfully.<br/><br/>
+                Thank You for Shopping with Us!<br/><br/>
+                Click on <a href="myorders.html"> My Orders</a> to review your order details.</b>
+        </p>
+        <table border="2px solid black" id="cartitemstable"></table>
+        <button type="button" id="clearcartitemsbtn" (click)="clearAll()">Clear Cart</button>
+        <button type="button" id="orderbtn" (click)="placeOrder()"><b>Place Order</b></button>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="productName">CART</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="width: 80%;align: center;">
+                <div id="productDetails">
+                    <table class="table table-bordered">
+                        <thead>
+                    <tr>
+                        <th>S no.</th>
+                        <th>Item Name</th>
+                        <th>quantity</th>
+                        <th>Item Price</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let data of items;let i=index">
+                            <th> {{ i+1 }} </th>
+                            <th>{{ data.name }}</th>
+                            <th>{{ data.quantity }}</th>
+                            <th>{{ data.price}}</th>
+                            <th><button type="button" (click) = "removeItem(i)">Delete</button></th>
+                        </tr>
+                        <tr >
+                            <th colspan='2'>Total</th>
+                            <th colspan='1'> {{ items.length}}</th>
+                            <th>Rs.{{getTotalPrice()}}</th>
+                            <th></th>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="placeOrder()" data-dismiss="modal">Place Order</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
