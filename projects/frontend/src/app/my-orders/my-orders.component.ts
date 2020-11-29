@@ -3,11 +3,11 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../services/auth.service';
 
 @Component({
-  selector: 'app-orders',
-  templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.css']
+  selector: 'app-my-orders',
+  templateUrl: './my-orders.component.html',
+  styleUrls: ['./my-orders.component.css']
 })
-export class OrdersComponent implements OnInit {
+export class MyOrdersComponent implements OnInit {
 
   constructor(private authservice: AuthService,private toastr:ToastrService ) { }
 
@@ -16,8 +16,11 @@ export class OrdersComponent implements OnInit {
   }
   orders: any;
   listOrders() {
-    this.authservice.getOrders().subscribe(res => {
-      this.orders = res;
+    let user=JSON.parse(localStorage.getItem("loggedInUser"));
+    this.authservice.getMyOrders(user.id).subscribe(res => {
+      let orders :any =res; 
+
+   this.orders=res;
       console.log(res);
     });
   

@@ -14,19 +14,35 @@ export class AuthService {
     
   }
   users: any;
-
+  login(user){
+    let url = this.apiUrl+"/users/login";
+  
+    return this.http.post<any>(url,user);
+  }
+  getProducts(){
+    return this.http.get<any>(this.apiUrl+"/products");
+   
+    }
   getUsers(){
     return this.http.get<any>(this.apiUrl+"/users");
    
     }
     getOrders(){
-      return this.http.get<any>(this.apiUrl+"/orders/");
+      return this.http.get<any>(this.apiUrl+"/orders");
      
       }
+      getMyOrders(user_id){
+        return this.http.get<any>(this.apiUrl+"/myorders?user_id="+user_id);
+       
+        }
     updateStatus(id,obj){
       let url = this.apiUrl+"/orders/"+id;
       return this.http.patch<any>(url,obj);
      
+    }
+    addOrder(orderObj){
+      let url = this.apiUrl+"/orders/";
+      return this.http.post<any>(url,orderObj);
     }
     storeLogindetails(user){
 
