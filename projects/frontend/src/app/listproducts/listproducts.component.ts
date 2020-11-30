@@ -82,7 +82,7 @@ export class ListproductsComponent implements OnInit {
     let linuser = JSON.parse(localStorage.getItem("loggedInUser"));
     console.log("users", linuser);
     let orderObj = { items: this.items, user_id: linuser.id, createdDate: new Date().toJSON(),status:"ORDERED" };
-
+    if(orderObj != null){
     this.authservice.addOrder(orderObj).subscribe (res=>{
         console.log(res);
 
@@ -90,6 +90,10 @@ export class ListproductsComponent implements OnInit {
     localStorage.removeItem("items");
 
     });
+  }
+  else{
+    this.toastr.warning("No Items in Cart");
+  }
   }
  clearAll(){
    this.items = [];

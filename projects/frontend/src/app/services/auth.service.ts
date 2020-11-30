@@ -20,8 +20,8 @@ export class AuthService {
     return this.http.post<any>(url,user);
   }
  
-  login(){
- return this.http.get<any>(this.apiUrl+"/users");  
+  login(user){
+ return this.http.post<any>(this.apiUrl+"/users/login",user);  
   }
   getProducts(){
     return this.http.get<any>(this.apiUrl+"/products");

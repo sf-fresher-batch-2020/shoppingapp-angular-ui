@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   }
   login(form:NgForm){
     let user= {email:this.email,password:this.password};
-    this.userservice.login().subscribe(res=>{
+    this.userservice.login(user).subscribe(res=>{
       if(!res['message']){
         let loggedInUser = res;
           this.userservice.storeLogindetails(loggedInUser);
