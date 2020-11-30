@@ -71,6 +71,7 @@ export class ListproductsComponent implements OnInit {
 
 
     }
+    this.toastr.success("Item added to cart");
     localStorage.setItem("items", (JSON.stringify(this.items)));
 
 
@@ -85,7 +86,7 @@ export class ListproductsComponent implements OnInit {
     this.authservice.addOrder(orderObj).subscribe (res=>{
         console.log(res);
 
-    alert("order placed successfully");
+        this.toastr.success("order placed successfully");
     localStorage.removeItem("items");
 
     });

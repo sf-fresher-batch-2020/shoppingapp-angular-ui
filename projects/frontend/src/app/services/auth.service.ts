@@ -14,10 +14,14 @@ export class AuthService {
     
   }
   users: any;
-  login(user){
-    let url = this.apiUrl+"/users/login";
   
+  register (user){
+    let url= this.apiUrl + "/users";
     return this.http.post<any>(url,user);
+  }
+ 
+  login(){
+ return this.http.get<any>(this.apiUrl+"/users");  
   }
   getProducts(){
     return this.http.get<any>(this.apiUrl+"/products");

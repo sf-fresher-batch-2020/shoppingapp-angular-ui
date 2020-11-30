@@ -17,17 +17,19 @@ export class LoginComponent implements OnInit {
   }
   login(form:NgForm){
     let user= {email:this.email,password:this.password};
-    this.userservice.login(user).subscribe(res=>{
+    this.userservice.login().subscribe(res=>{
       if(!res['message']){
         let loggedInUser = res;
           this.userservice.storeLogindetails(loggedInUser);
           if(loggedInUser.role=="ADMIN"){
             this.toastr.success("ADMIN LOGGED IN");
-            this.router.navigate(['orders']);
+            //this.router.navigate(['orders']);
+            window.location.href="orders";
           }
           else{
             this.toastr.success("USER LOGGED IN");
-            this.router.navigate(['products']);
+            window.location.href="products";
+            //this.router.navigate(['products']);
           }
         }
         else{
