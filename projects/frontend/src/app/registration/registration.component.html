@@ -1,0 +1,28 @@
+<h1 style="text-align: center;">CHINNI HANDICRAFTS</h1>
+<h3 style="text-align: center;">Registration Form</h3>
+<div class="wrapper">
+    <div id="page-content">
+        
+        <form (ngSubmit)="register(r)" #r="ngForm" autocomplete="off">
+            <div class="form-group">
+                <label>NAME</label>
+                <input type="text" name="username" id="username" class="reg" [(ngModel)]="username"
+                    placeholder="Enter username ex: asher" required autofocus><br>
+            </div>
+            <div class="form-group">
+                <label>EMAIL-ID</label>
+                <input type="email" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="reg"
+                    [(ngModel)]="email" placeholder="Enter user email ex: asher@gmail.com" required EmailValidator><br>
+            </div>
+
+            <label>PASSWORD</label>
+            <input type="password" name="password" id="password" class="reg" [(ngModel)]="password"
+                placeholder="Enter password" required><br>
+
+            <button [disabled]="r.invalid">REGISTER</button>
+
+        </form>
+        ALREADY HAVE AN ACCOUNT.<a routerLink="/login"> LOGIN HERE..</a>
+    </div>
+</div>
+<div id="overlay-area"></div>

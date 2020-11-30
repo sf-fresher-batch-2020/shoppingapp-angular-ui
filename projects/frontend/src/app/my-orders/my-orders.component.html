@@ -1,10 +1,9 @@
-<p>my-orders works!</p>
-<table border="2px solid black" style="margin-left: 0%; margin-top: 20px;">
+<h1 style="text-align: center;">My Orders</h1>
+<table border="2px solid black" style="margin-left: 30%; margin-top: 20px;">
     <thead>
 
       <tr>
-        <th> Order ID </th>
-        <th>Order Details</th> 
+        <th> Order ID </th> 
         <th>Amount</th>
         <th>Ordered By</th>
         <th> Ordered Date </th>            
@@ -41,8 +40,7 @@
         <td>{{o.order_date}}</td> 
         <td>{{o.status}}</td> 
        
-        <td><button type="button" *ngIf = "o.status == 'ORDERED'"(click)="cancelOrder(o.id,'DELIVERED')">DELIVER</button>
-            <button type="button" *ngIf = "o.status == 'ORDERED'" (click)="cancelOrder(o.id,'CANCELLED')">CANCEL</button></td>  
+        <td><button type="button" *ngIf = "o.status == 'ORDERED'" (click)="cancelOrder(o.id,'CANCELLED')">CANCEL</button></td>  
     </tr>
     </tbody>
   </table>

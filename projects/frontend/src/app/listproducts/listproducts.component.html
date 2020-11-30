@@ -25,17 +25,16 @@
         </div>
         <div class="col-10">
             <div id="app" *ngIf="products">
-            <div class="row">
-                <div class="col pull-right mr-auto">
-                <button type="button" id="clearcartitemsbtn" (click)="clearAll()">Clear Cart</button>
-                <button type="button" id="orderbtn" data-toggle="modal" data-target="#exampleModal"><b>Place Order</b></button>
+            <div class="row"   style="float: right;" >
+                <div class="col pull-right ml-auto " >
+                <button type="button" id="orderbtn" data-toggle="modal" data-target="#exampleModal" style="margin-bottom: 50px;"><b>View Cart</b></button>
             </div>
             </div>
             <br/>
                 <!-- {{items | json}} -->
                 <div class="row">
                     <div class=col-3 *ngFor="let p of (products|range:range|categories:categories)">
-                        <div class="card" style="width: 18rem;">
+                        <div class="card" style="width: 18rem; margin-bottom: 15px;margin-top: 15px; padding-right: 10px;">
                             <img width="100px" height="250px" src="{{p.image_url}}" class="card-img-top" alt="...">
                             <div class="card-body">
                               <h5 class="card-title">{{p.product_name}}</h5>
@@ -67,7 +66,7 @@
     </div>
 </div>
 
-<div class="cartBox">
+<!-- <div class="cartBox">
     <div class="cart">
         <i class="fa fa-close"></i>
         <h1 id="cartitems">Cart</h1>
@@ -81,7 +80,7 @@
         <button type="button" id="clearcartitemsbtn" (click)="clearAll()">Clear Cart</button>
         <button type="button" id="orderbtn" (click)="placeOrder()"><b>Place Order</b></button>
     </div>
-</div>
+</div> -->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -93,7 +92,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body" style="width: 80%;align: center;">
+            <div class="modal-body" style="width: 80%; align: center;">
                 <div id="productDetails">
                     <table class="table table-bordered">
                         <thead>
@@ -125,6 +124,7 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-info" id="clearcartitemsbtn" (click)="clearAll()">Clear Cart</button>
                 <button type="button" class="btn btn-primary" (click)="placeOrder()" data-dismiss="modal">Place Order</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 

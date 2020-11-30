@@ -12,25 +12,22 @@
             <li class="nav-item active">
                 <a class="nav-link" routerLink="products" >Products <span class="sr-only"></span></a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" routerLink="myOrders" *ngIf="isloggedInUser">My Orders <span class="sr-only"></span></a>
+            <li class="nav-item active" >
+                <a class="nav-link" *ngIf="isloggedInUser && isloggedInUser.role=='USER'" routerLink="myOrders" >My Orders <span class="sr-only"></span></a>
             </li>
-            
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"  *ngIf="!isloggedInUser" aria-expanded="false">Category</a>
-                <div class="dropdown-menu" aria-labelledby="dropdownId">
-                    <a class="dropdown-item" href="#">Bangles</a>
-                    <a class="dropdown-item" href="#">Earrings</a>
-                    <a class="dropdown-item" href="#">Bracelets</a>
-                </div>
+            <li class="nav-item active" >
+                <a class="nav-link" routerLink="orders" *ngIf="isloggedInUser && isloggedInUser.role=='ADMIN'">Orders <span class="sr-only"></span></a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
                 <a class="nav-link" routerLink="/login" *ngIf="!isloggedInUser">Login</a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/register" *ngIf="!isloggedInUser">Register</a>
+            </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" *ngIf="isloggedInUser">welcome {{ isloggedInUser?.username }}</a>
+                <a class="nav-link" *ngIf="isloggedInUser">welcome {{ isloggedInUser?.username }}</a>
                 
             </li>
             <li class="nav-item">

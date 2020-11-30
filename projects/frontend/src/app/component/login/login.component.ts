@@ -23,11 +23,13 @@ export class LoginComponent implements OnInit {
           this.userservice.storeLogindetails(loggedInUser);
           if(loggedInUser.role=="ADMIN"){
             this.toastr.success("ADMIN LOGGED IN");
-            this.router.navigate(['orders']);
+            //this.router.navigate(['orders']);
+            window.location.href="orders";
           }
           else{
             this.toastr.success("USER LOGGED IN");
-            this.router.navigate(['products']);
+            window.location.href="products";
+            //this.router.navigate(['products']);
           }
         }
         else{
