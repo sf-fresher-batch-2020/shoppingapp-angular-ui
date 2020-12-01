@@ -97,5 +97,7 @@ export class ListproductsComponent implements OnInit {
   }
  clearAll(){
    this.items = [];
+   localStorage.setItem("items", (JSON.stringify(this.items)));
+
  }
 }
