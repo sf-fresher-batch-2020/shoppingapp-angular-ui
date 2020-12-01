@@ -1,6 +1,8 @@
 <h3> Login </h3>
 <form #f="ngForm" (ngSubmit)="login(f)">
-    <input type="email" name="email" [(ngModel)]="email" required placeholder="Enter Email">
-    <input type="password" name="password" [(ngModel)]="password" required placeholder="Enter password"/>
+    <label>Email ID</label>
+    <input type="email" name="email" [(ngModel)]="email" required placeholder="Enter Email"> <br/>
+    <label>Password</label>
+    <input type="password" name="password" [(ngModel)]="password" required placeholder="Enter password"/><br/>
     <button [disabled]="f.invalid">Submit</button>
 </form>
